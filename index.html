@@ -55,18 +55,23 @@ Predisporre un campo di input testuale e un pulsante "aggiungi": cliccando sul p
 
 
 
-            <div  v-for="(item, index) in todo" 
-            :key="index" class="col-9 mt-1  bg-primary-subtle  rounded p-3 d-flex justify-content-between ">
+            <div  
+            v-for="(item, index) in todo" 
+            :key="index" 
+
+            class="col-9 mt-1  bg-primary-subtle  rounded p-3 d-flex justify-content-between ">
 
                 <div>
-                    <p class="border-bottom p-2 border-black text-capitalize  ">
-                      {{item}}
+                    <p @click="lineThrough(index)"
+                    v-bind:class="{ 'textSbarrato': item.isActive}"
+                    class="border-bottom p-2 border-black text-capitalize  ">
+                      {{item.lezione}}
                     </p>
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center ">
                     <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                        <svg v-on:click="rimuoviCompito" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
                             class="bi bi-x" viewBox="0 0 16 16">
                             <path
                                 d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
