@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-todolist</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css'
+        integrity='sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=='
+        crossorigin='anonymous' />
+
+
+</head>
+
+<body>
+
+    <!-- 
+Rifare l'esercizio della to do list.
+
+Questa volta però ogni todo sarà un oggetto, formato da due proprietà:
+- text, una stringa che indica il testo del todo
+- done, un booleano (true/false) che indica se il todo è stato fatto oppure no
+
+
+MILESTONE 1
+Stampare all'interno di una lista HTML un item per ogni todo.
+Se la proprietà done è uguale a true, visualizzare il testo del todo sbarrato.
+
+
+MILESTONE 2
+Visualizzare a fianco ad ogni item ha una "x": cliccando su di essa, il todo viene rimosso dalla lista.
+
+
+MILESTONE 3
+Predisporre un campo di input testuale e un pulsante "aggiungi": cliccando sul pulsante, il testo digitato viene letto e utilizzato per creare un nuovo todo, che quindi viene aggiunto alla lista dei todo esistenti. -->
+
+    <div id="app">
+        <div class="container p-0 ">
+
+            <h1 class="text-center text-capitalize mt-4 ">vue todolist</h1>
+
+            <div class="row mt-5 mb-4">
+
+                <div class="col-9">
+                    <input type="text" class="form-control p-2" placeholder="Inserisci qui..." aria-label="">
+                </div>
+
+                <div class="col-3">
+                    <input class="btn btn-primary p-2" type="button" value="Aggiungi">
+                </div>
+
+            </div>
+
+
+
+            <div  v-for="(item, index) in todo" 
+            :key="index" class="col-9 mt-1  bg-primary-subtle  rounded p-3 d-flex justify-content-between ">
+
+                <div>
+                    <p class="border-bottom p-2 border-black text-capitalize  ">
+                      {{item}}
+                    </p>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center ">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                            class="bi bi-x" viewBox="0 0 16 16">
+                            <path
+                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'
+        integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        crossorigin='anonymous'></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
