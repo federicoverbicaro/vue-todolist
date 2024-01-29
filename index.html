@@ -24,16 +24,16 @@ Questa volta però ogni todo sarà un oggetto, formato da due proprietà:
 - done, un booleano (true/false) che indica se il todo è stato fatto oppure no
 
 
-MILESTONE 1
+✅ MILESTONE 1
 Stampare all'interno di una lista HTML un item per ogni todo.
 Se la proprietà done è uguale a true, visualizzare il testo del todo sbarrato.
 
 
-MILESTONE 2
+✅ MILESTONE 2
 Visualizzare a fianco ad ogni item ha una "x": cliccando su di essa, il todo viene rimosso dalla lista.
 
 
-MILESTONE 3
+✅ MILESTONE 3
 Predisporre un campo di input testuale e un pulsante "aggiungi": cliccando sul pulsante, il testo digitato viene letto e utilizzato per creare un nuovo todo, che quindi viene aggiunto alla lista dei todo esistenti. -->
 
     <div id="app">
@@ -44,40 +44,44 @@ Predisporre un campo di input testuale e un pulsante "aggiungi": cliccando sul p
             <div class="row mt-5 mb-4">
 
                 <div class="col-9">
-                    <input type="text" class="form-control p-2" placeholder="Inserisci qui..." aria-label="">
+                    <input v-model="todoNuovo" @keyup.enter="aggiungiTodo" type="text" class="form-control p-2" placeholder="Inserisci qui..."
+                        aria-label="">
                 </div>
 
                 <div class="col-3">
-                    <input class="btn btn-primary p-2" type="button" value="Aggiungi">
+                    <input @click="aggiungiTodo"
+                    class="btn btn-primary p-2" type="button" value="Aggiungi">
                 </div>
 
             </div>
 
 
 
-            <div  
+            <div v-if="todo.length!== 0" 
             v-for="(item, index) in todo" 
-            :key="index" 
-
-            class="col-9 mt-1  bg-primary-subtle  rounded p-3 d-flex justify-content-between ">
+            :key="index"
+                class="col-9 mt-1  bg-primary-subtle  rounded p-3 d-flex justify-content-between ">
 
                 <div>
-                    <p @click="lineThrough(index)"
-                    v-bind:class="{ 'textSbarrato': item.isActive}"
-                    class="border-bottom p-2 border-black text-capitalize  ">
-                      {{item.lezione}}
+                    <p @click="lineThrough(index)" v-bind:class="{ 'textSbarrato': item.isActive}"
+                        class="border-bottom p-2 border-black text-capitalize  ">
+                        {{item.lezione}}
                     </p>
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center ">
                     <span>
-                        <svg v-on:click="rimuoviCompito" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
-                            class="bi bi-x" viewBox="0 0 16 16">
+                        <svg v-on:click="rimuoviCompito" xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                            fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                             <path
                                 d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                         </svg>
                     </span>
                 </div>
+               
+            </div>
+            <div v-else class="col-9 mt-1  bg-primary-subtle  rounded p-3 d-flex justify-content-between">
+                <h1 class="text-capitalize ">non ci sono task 😎</h1>
             </div>
 
 
